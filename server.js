@@ -67,7 +67,7 @@ app.post("/chat/newmessage", function(request,response){
   else{ 
     // add the new quote to the array 
     messages.push(newMessage);
-    
+
     //level4// 
     newMessage.timeSent = new Date();
   }
@@ -102,7 +102,7 @@ app.get("/message/search",function (request, response) {
       return true;
     }
   });
-  respond.send(searchMessaage);
+  response.send(searchMessaage);
 });
 
 app.get('/message/latest', function(respond,request){
