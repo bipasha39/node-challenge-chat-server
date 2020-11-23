@@ -36,6 +36,7 @@ If you want to share your server with other people the easiest way to do this is
 - [ ] Take time to read the comments
 - [ ] Copy the code you've written to Glitch
 
+
 ## Level 1 Challenge - make the chat server
 
 At this first level, your API must allow a client to:
@@ -69,6 +70,8 @@ Try to use what you know to do this challenge on your own. It does not require a
 
 You may find useful the [express cheatsheet](https://github.com/nbogie/express-notes/blob/master/express-cheatsheet.md)
 
+
+
 ## End of Level 1 challenge!
 
 Well done!
@@ -78,6 +81,8 @@ What to do now:
 - [ ] _Don't_ post on slack, unless there's a thread announced specifically for it.
 - [ ] Instead, attach the URLs as links when you "mark done" your assignment in Google Classroom.
 - [ ] You might want to download your project for safekeeping. (Tools: Git, Import, and Export: Download Project)
+
+
 
 ## Level 2 - simple validation
 
@@ -94,6 +99,8 @@ There is intentionally no security or ownership of messages - anyone can delete 
 
 This is a big topic for further study. We won't try to cover it in this challenge.
 
+
+
 ## Level 3 - more "read" functionality
 
 For this level your API _must_ also allow a client to:
@@ -101,12 +108,17 @@ For this level your API _must_ also allow a client to:
 - [ ] Read _only_ messages whose text contains a given substring: `/messages/search?text=express`
 - [ ] Read only the most recent 10 messages: `/messages/latest`
 
+
+
+
 ## Level 4 - Optional - add a timestamp, `timeSent`
 
 For this level, the server must:
 
 - [ ] store a timestamp in each message object, in a field called `timeSent`.
 - [ ] This should be set to the current time when the server first receives the message. This should be a DateTime object, which can be created with `new Date()`. It will NOT be submitted by the client.
+
+
 
 ## Level 5 - Optional - add message _update_ functionality
 
