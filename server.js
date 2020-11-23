@@ -105,11 +105,13 @@ app.get("/message/search",function (request, response) {
   response.send(searchMessaage);
 });
 
-app.get('/message/latest', function(respond,request){
+app.get('/message/latest', function(request,response){
   latestMessage = messages.slice(0, 10);
-  respond.send(latestMessage)
+  response.send(latestMessage)
 });
 
+
+// Aux function//
 const saveMessage = messages => {
   let data = JSON.stringify(messages);
   fs.writeFileSync('chats.json', data);
