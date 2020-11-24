@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const fs = require('fs');
+const chats = require("./chats.json");
 const bodyParser = require('body-parser'); 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,7 +19,8 @@ const welcomeMessage = {
 //We will start with one message in the array.
 //Note: messages will be lost when Glitch restarts our server.
 
-const messages = [welcomeMessage];
+//const messages = [welcomeMessage];
+const messages = chats; 
 
 // Level-1 Challenge //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -30,16 +32,16 @@ app.get("/", function (request, response) {
 
 //get all chat...........................................
 
-app.get("/chat/allmessages",function(request, response){
+app.get("/messages",function(request, response){
   console.log(messages);
   response.send(messages);
 });
 
  //get chat by id........................................
 
-app.get("/chat/:id",function(request, response){
+app.get("/messages/:id",function(request, response){
   const id = request.params.id;
-  console.log(id);
+  console.log("show the id",id);
   const message = messages.find((element)=>{
     return element.id ==id;
   })
@@ -50,7 +52,7 @@ app.get("/chat/:id",function(request, response){
 
 // post new message.........................................
 
-app.post("/chat/newmessage", function(request,response){
+app.post("/messages", function(request,response){
   let newMessage = request.body; 
   console.log(newMessage);
   newMessage.id = messages.length
@@ -79,7 +81,7 @@ app.post("/chat/newmessage", function(request,response){
 
 //delete message............................................
 
-app.delete("/chat/:id",function(request,response){
+app.delete("/messages/:id",function(request,response){
   const id = request.params.id;
   const deleteMessage = messages.filter((element) => {
     return element.id == id; 
@@ -94,8 +96,7 @@ response.send(deleteMessage)
 });
 
 //level 3.....................
-
-app.get("/message/search",function (request, response) {
+app.get("/chat/search",function (request, response) {
   let textForSearch = request.query.text;
   let searchMessaage = messages.filter((item) => {
     if (item.text.includes(textForSearch)) {
@@ -105,8 +106,10 @@ app.get("/message/search",function (request, response) {
   response.send(searchMessaage);
 });
 
-app.get('/message/latest', function(request,response){
-  latestMessage = messages.slice(0, 10);
+app.get('/chat/latest',function(request,response){
+  //let test = messages;
+  let latestMessage = messages[messages.length - 1];
+  console.log("testing latest",messages.length);
   response.send(latestMessage)
 });
 
